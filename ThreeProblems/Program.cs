@@ -91,6 +91,10 @@ if (choice == 2 || choice == 4)
 } 
 if (choice == 3 || choice == 4)
 {
-    
+    for (int i = 0; i < scoresArray.Length; i++)
+    {
+        System.Console.Write($"Score {i + 1}: ");
+        scoresArray[i] = Convert.ToInt32(System.Console.ReadLine());
+    }
 
 }
