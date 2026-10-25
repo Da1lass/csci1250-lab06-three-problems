@@ -23,7 +23,19 @@ System.Console.WriteLine("2. The Dice Table");
 System.Console.WriteLine("3. The Score Report");
 System.Console.WriteLine("4. All three");
 System.Console.WriteLine("5. Quit");
+System.Console.Write("Choose 1 through 5: ");
 choice = Convert.ToInt32(System.Console.ReadLine());
+
+while (choice > 5 || choice < 1)
+{
+    System.Console.WriteLine("Choose a number 1 through 5.");
+    System.Console.Write("Choose 1 through 5: ");
+    choice = Convert.ToInt32(System.Console.ReadLine());
+}
+
+while (choice >= 1 && choice <= 4) {
+
+
 
 if (choice == 1 || choice == 4)
 {
@@ -96,6 +108,7 @@ if (choice == 2 || choice == 4)
 } 
 if (choice == 3 || choice == 4)
 {
+    System.Console.WriteLine("=== Exercise 3: The Score Report ===");
     for (int i = 0; i < scoresArray.Length; i++)
     {
         System.Console.Write($"Score {i + 1}: ");
@@ -105,8 +118,6 @@ if (choice == 3 || choice == 4)
     int loopCount = 0;
     foreach (int i in scoresArray)
     {
-        
-        System.Console.WriteLine($"loop{loopCount}");
         totalScore += scoresArray[loopCount];
         if (scoresArray[loopCount] >= 60)
         {
@@ -116,11 +127,21 @@ if (choice == 3 || choice == 4)
     }
     averageScore = totalScore / (double)scoresArray.Length;
     highestScore = scoresArray.Max();
-
+    System.Console.WriteLine();
     System.Console.WriteLine($"Scores entered: {scoresArray.Length}");
     System.Console.WriteLine($"Total: {totalScore}");
     System.Console.WriteLine($"Average: {averageScore.ToString("F1")}");
     System.Console.WriteLine($"Highest: {highestScore}");
     System.Console.WriteLine($"Passing: {passingCount} of {scoresArray.Length}");
+    System.Console.WriteLine();
     
+} 
+System.Console.WriteLine("=== CSCI 1250 Lab 06 ===");
+System.Console.WriteLine("1. The Grade Checker");
+System.Console.WriteLine("2. The Dice Table");
+System.Console.WriteLine("3. The Score Report");
+System.Console.WriteLine("4. All three");
+System.Console.WriteLine("5. Quit");
+System.Console.Write("Choose 1 through 5: ");
+choice = Convert.ToInt32(System.Console.ReadLine());
 }
