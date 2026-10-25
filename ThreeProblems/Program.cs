@@ -12,6 +12,11 @@ int rollsWon = 0; //how many rolls are won
 string rollChoice = "y"; 
 
 int[] scoresArray = new int[5];
+int totalScore = 0;
+double averageScore;
+int highestScore;
+int passingCount = 0;
+
 System.Console.WriteLine("=== CSCI 1250 Lab 06 ===");
 System.Console.WriteLine("1. The Grade Checker");
 System.Console.WriteLine("2. The Dice Table");
@@ -95,6 +100,27 @@ if (choice == 3 || choice == 4)
     {
         System.Console.Write($"Score {i + 1}: ");
         scoresArray[i] = Convert.ToInt32(System.Console.ReadLine());
+        
     }
+    int loopCount = 0;
+    foreach (int i in scoresArray)
+    {
+        
+        System.Console.WriteLine($"loop{loopCount}");
+        totalScore += scoresArray[loopCount];
+        if (scoresArray[loopCount] >= 60)
+        {
+            passingCount += 1;
+        }
+        loopCount += 1;
+    }
+    averageScore = totalScore / (double)scoresArray.Length;
+    highestScore = scoresArray.Max();
 
+    System.Console.WriteLine($"Scores entered: {scoresArray.Length}");
+    System.Console.WriteLine($"Total: {totalScore}");
+    System.Console.WriteLine($"Average: {averageScore.ToString("F1")}");
+    System.Console.WriteLine($"Highest: {highestScore}");
+    System.Console.WriteLine($"Passing: {passingCount} of {scoresArray.Length}");
+    
 }
