@@ -11,6 +11,7 @@
 Random rng = new Random(4000);
 
 int choice; // module selection
+
 int score; //module 1 score input var
 
 int rollCount = 0; //how many total rolls
@@ -20,11 +21,11 @@ int valueRolled = 0; //total value of roll
 int rollsWon = 0; //how many rolls are won
 string rollChoice = "y"; 
 
-int[] scoresArray = new int[5];
-int totalScore = 0;
-double averageScore;
-int highestScore;
-int passingCount = 0;
+int[] scoresArray = new int[5]; //array creation for module 3
+int totalScore = 0; //sum of scoresArray
+double averageScore; //the average of scoresArray
+int highestScore; //higest value of scoresArray
+int passingCount = 0; //how many scores are above a massing grade (60)
 
 System.Console.WriteLine("=== CSCI 1250 Lab 06 ===");
 System.Console.WriteLine("1. The Grade Checker");
@@ -35,23 +36,21 @@ System.Console.WriteLine("5. Quit");
 System.Console.Write("Choose 1 through 5: ");
 choice = Convert.ToInt32(System.Console.ReadLine());
 
-while (choice > 5 || choice < 1)
+while (choice > 5 || choice < 1) //logic simpiifes to: if choice is above 5 or below 1, reprompt
 {
     System.Console.WriteLine("Choose a number 1 through 5.");
     System.Console.Write("Choose 1 through 5: ");
     choice = Convert.ToInt32(System.Console.ReadLine());
 }
 
-while (choice >= 1 && choice <= 4) {
-
-
-
-if (choice == 1 || choice == 4)
+while (choice >= 1 && choice <= 4) //while choice is >= 1 and choice is <= 4
+{
+if (choice == 1 || choice == 4) //module one
 {
     System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
     System.Console.Write("Score: ");
     score = Convert.ToInt32(System.Console.ReadLine());
-    while (score > 100 || score < 0) {
+    while (score > 100 || score < 0) { //if score is out of valid bounds, repromp
         System.Console.WriteLine("A score must be between 0 and 100.");
         System.Console.Write("Score: ");
         score = Convert.ToInt32(System.Console.ReadLine());
@@ -72,16 +71,16 @@ if (choice == 1 || choice == 4)
     {
         System.Console.WriteLine($"{score} earns a D.");
     }
-    else
+    else //anything between 59 and 0 is failing
     {
         System.Console.WriteLine($"{score} earns an F");
     }
     
 }
-if (choice == 2 || choice == 4)
+if (choice == 2 || choice == 4) //module 2
 {
     System.Console.WriteLine("=== Exercise 2: The Dice Table ===");
-    while (rollChoice == "y") {
+    while (rollChoice == "y") { //as long as user keeps saying y, itll keep rolling
         rollCount += 1;
         roll1 = rng.Next(1,7);
         roll2 = rng.Next(1,7);
@@ -106,7 +105,7 @@ if (choice == 2 || choice == 4)
         }
     System.Console.Write("Roll again? (y/n): ");
     rollChoice = System.Console.ReadLine();
-    while (rollChoice != "y" && rollChoice != "n") {
+    while (rollChoice != "y" && rollChoice != "n") { //repromts user is choice is anything but y or n
         System.Console.WriteLine("Invalid Choice.");
         System.Console.Write("Roll again? (y/n): ");
         rollChoice = System.Console.ReadLine();
@@ -115,17 +114,17 @@ if (choice == 2 || choice == 4)
     System.Console.WriteLine($"You rolled {rollCount} times and won {rollsWon}.");
     
 } 
-if (choice == 3 || choice == 4)
+if (choice == 3 || choice == 4) //module 3
 {
     System.Console.WriteLine("=== Exercise 3: The Score Report ===");
-    for (int i = 0; i < scoresArray.Length; i++)
+    for (int i = 0; i < scoresArray.Length; i++) //recieves input from user i times, where i is length of scoresArray
     {
         System.Console.Write($"Score {i + 1}: ");
         scoresArray[i] = Convert.ToInt32(System.Console.ReadLine());
         
     }
-    int loopCount = 0;
-    foreach (int i in scoresArray)
+    int loopCount = 0; //intitilize loop counter outside of loop
+    foreach (int i in scoresArray) //for each element in scoresArray
     {
         totalScore += scoresArray[loopCount];
         if (scoresArray[loopCount] >= 60)
@@ -135,7 +134,7 @@ if (choice == 3 || choice == 4)
         loopCount += 1;
     }
     averageScore = totalScore / (double)scoresArray.Length;
-    highestScore = scoresArray.Max();
+    highestScore = scoresArray.Max(); //the highest value of the array
     System.Console.WriteLine();
     System.Console.WriteLine($"Scores entered: {scoresArray.Length}");
     System.Console.WriteLine($"Total: {totalScore}");
